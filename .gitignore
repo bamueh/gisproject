@@ -9,3 +9,8 @@ __pycache__
 
 # Other
 ~*
+
+# Data files
+# Not checking those in, since I'm not sure I can re-distribute data
+data/*.tar
+data/landsat/LC0*
