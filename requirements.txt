@@ -1,0 +1,9 @@
+argparse
+dash-leaflet
+geopandas
+numpy
+os
+pandas
+pysal
+rasterio
+shapely
