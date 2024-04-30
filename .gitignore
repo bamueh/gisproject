@@ -14,3 +14,6 @@ __pycache__
 # Not checking those in, since I'm not sure I can re-distribute data
 data/*.tar
 data/landsat/LC0*
+# Ignoring those because the data is too big
+data/landsat/rescaled/*.TIF
+data/landsat/reprojected/*.TIF
