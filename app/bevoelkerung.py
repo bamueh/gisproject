@@ -589,10 +589,10 @@ def main(local):
         filtered_features = [
             feature
             for feature in zh_population["features"]
-            if feature["properties"]["n_total"] > value1
-            and feature["properties"]["n_old"] > value2
-            and feature["properties"]["perc_old"] > value3
-            and feature["properties"]["average_temp"] > value4
+            if feature["properties"]["n_total"] >= value1
+            and feature["properties"]["n_old"] >= value2
+            and feature["properties"]["perc_old"] >= value3
+            and feature["properties"]["average_temp"] >= value4
         ]
         if value5 == [1]:
             filtered_features = [
