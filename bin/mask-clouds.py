@@ -5,6 +5,8 @@ import argparse
 import numpy as np
 import rasterio
 
+from giscode.common import NODATAVAL
+
 
 def main(inRaster, outRaster):
     """
@@ -41,7 +43,7 @@ def main(inRaster, outRaster):
             "dtype": "float64",
             "crs": tempRaster.crs,
             "transform": tempRaster.transform,
-            "nodata": -999,
+            "nodata": NODATAVAL,
         }
     )
 

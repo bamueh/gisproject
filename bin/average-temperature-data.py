@@ -3,7 +3,7 @@
 import argparse
 import rasterio
 import numpy as np
-from giscode.common import GOODSCENES, PROCLSDIR
+from giscode.common import GOODSCENES, PROCLSDIR, NODATAVAL
 from os.path import join
 
 
@@ -26,13 +26,13 @@ def main(outRaster):
         ls = rasterio.open(file)
 
         counts = ls.read(1)
-        counts[counts != -999] = 1
-        counts[counts == -999] = 0
+        counts[counts != NODATAVAL] = 1
+        counts[counts == NODATAVAL] = 0
 
         arrCount += counts
 
         d = ls.read(1)
-        d[d == -999] = 0
+        d[d == NODATAVAL] = 0
 
         arr += d
 
@@ -59,7 +59,7 @@ def main(outRaster):
             "dtype": "float64",
             "crs": tempRaster.crs,
             "transform": tempRaster.transform,
-            "nodata": -999,
+            "nodata": NODATAVAL,
         }
     )
 

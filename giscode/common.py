@@ -28,3 +28,4 @@ GOODSCENES = (
 
 )
 
+NODATAVAL = -999

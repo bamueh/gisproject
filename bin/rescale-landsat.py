@@ -4,6 +4,8 @@
 import argparse
 import rasterio
 
+from giscode.common import NODATAVAL
+
 
 def main(inRaster, outRaster):
     """
@@ -27,7 +29,7 @@ def main(inRaster, outRaster):
 
     # The no-data value is 0. If we convert to Celsius, some of the data may
     # be below 0, therefore we need to change the no-data value.
-    b10DataRescaled[b10DataRescaled == 0] = -999 + 273.15
+    b10DataRescaled[b10DataRescaled == 0] = NODATAVAL + 273.15
 
     # Convert to Celsius
     b10DataCelsius = b10DataRescaled - 273.15
@@ -43,7 +45,7 @@ def main(inRaster, outRaster):
             "dtype": "float64",
             "crs": raster.crs,
             "transform": raster.transform,
-            "nodata": -999,
+            "nodata": NODATAVAL,
         }
     )
 

@@ -1,8 +1,10 @@
 argparse
+dark-matter
 dash-leaflet
 geopandas
 numpy
 os
+osgeo
 pandas
 pysal
 rasterio

@@ -8,7 +8,7 @@ from pysal.explore import esda
 from pysal.lib import weights
 from os.path import join
 
-from giscode.common import GOODSCENES, PROCLSDIR, BEVDIR, TOPDIR
+from giscode.common import GOODSCENES, PROCLSDIR, BEVDIR, TOPDIR, NODATAVAL
 
 
 def main():
@@ -89,7 +89,7 @@ def main():
     data["average_temp_gis"] = result
 
     # Drop cells without population data
-    popData = data.loc[data.n_total != -999]
+    popData = data.loc[data.n_total != NODATAVAL]
 
     # Convert to GeoJSON
     # I originally used this code to save the files within the working

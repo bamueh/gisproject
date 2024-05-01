@@ -8,6 +8,8 @@ import rasterio
 from rasterio.transform import from_origin
 from rasterio import CRS
 
+from giscode.common import NODATAVAL
+
 
 def main(inCsv, outRaster):
     """
@@ -26,8 +28,8 @@ def main(inCsv, outRaster):
     d["J_65PLUS_T"] = d.apply(
         lambda row: (
             round((row["J_65_79_P"] + row["J_80PLUS_P"]) * row["PERS_N"] / 100, 0)
-            if row["PERS_N"] != -999
-            else -999.0
+            if row["PERS_N"] != NODATAVAL
+            else NODATAVAL
         ),
         axis=1,
     )
@@ -35,7 +37,7 @@ def main(inCsv, outRaster):
     # Add another column that summarises the fraction of people >65 years old
     d["J_65PLUS_P"] = d.apply(
         lambda row: (
-            row["J_65_79_P"] + row["J_80PLUS_P"] if row["PERS_N"] != -999 else -999.0
+            row["J_65_79_P"] + row["J_80PLUS_P"] if row["PERS_N"] != NODATAVAL else NODATAVAL
         ),
         axis=1,
     )
@@ -48,11 +50,11 @@ def main(inCsv, outRaster):
 
     # Create arrays
     # Total number of people
-    total = np.full((int((N - S) / 100), int((E - W) / 100)), -999.0)
+    total = np.full((int((N - S) / 100), int((E - W) / 100)), NODATAVAL)
     # Total number of people >65 years old
-    totalOld = np.full((int((N - S) / 100), int((E - W) / 100)), -999.0)
+    totalOld = np.full((int((N - S) / 100), int((E - W) / 100)), NODATAVAL)
     # Fraction of people >65 years old.
-    data = np.full((int((N - S) / 100), int((E - W) / 100)), -999.0)
+    data = np.full((int((N - S) / 100), int((E - W) / 100)), NODATAVAL)
 
     for i, row in d.iterrows():
         wIndex = int((row["E"] - W) / 100)
@@ -71,7 +73,7 @@ def main(inCsv, outRaster):
         count=3,
         dtype=str(data.dtype),
         crs=CRS.from_epsg(2056),
-        nodata=-999,
+        nodata=NODATAVAL,
         transform=from_origin(W, N, 100, 100),
     )
 
