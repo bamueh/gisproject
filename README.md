@@ -8,4 +8,4 @@ To re-generate the data in this repo from scratch, download the raw data as desc
 
 
 ## Run interactive website
-To visualise temperature and population data and allow the user to interactively  explore where areas with high temperatures intersect with areas with a high number of older inhabitants I created a dash app. The app can be run locally by running `$ make server`.
+To visualise temperature and population data and allow the user to interactively  explore where areas with high temperatures intersect with areas with a high number of older inhabitants I created a dash app. To run the app locally, `cd app` and then run `$ make server`.

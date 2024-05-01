@@ -82,3 +82,4 @@ population-raster:
 # Clip the population data to the area of Zurich.
 clip-population:
 	gdalwarp -cutline data/gemeindegrenzen/UP_GEMEINDEN_OHNE_SEEN_F.shp -crop_to_cutline data/bevoelkerungsstatistik/Raumliche_Bevolkerungsstatistik_-OGD/BEVOELKERUNG_HA_P-raster.TIF data/bevoelkerungsstatistik/Raumliche_Bevolkerungsstatistik_-OGD/BEVOELKERUNG_HA_P-raster-clipped.TIF; \
+

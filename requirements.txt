@@ -1,7 +1,10 @@
 argparse
 dark-matter
+dash
+dash_extensions
 dash-leaflet
 geopandas
+json
 numpy
 os
 osgeo
