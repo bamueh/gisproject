@@ -497,8 +497,7 @@ def main(local):
                         ],
                         style={"width": "100%"},
                     ),
-                    # Slider for average temperature threshold
-                    # html.Label("Is temperature hotspot"),
+                    # Button for Hotspot
                     html.Div(
                         [
                             dcc.Checklist(
