@@ -62,7 +62,7 @@ mask-clouds:
 		python bin/mask-clouds.py --inRaster data/landsat/clipped/$$n\_ST_B10-clipped.TIF --outRaster data/landsat/masked/$$n\_ST_B10-masked.TIF; \
 	done
 
-# Change the resolution from 30x30 to 100x100m to match the population data.
+# Change the resolution from 30x30 to 100x100m to match the population data. Suggested by ChatGPT.
 resolution:
 	for dir in data/landsat/LC*; do \
 		echo $$dir; \

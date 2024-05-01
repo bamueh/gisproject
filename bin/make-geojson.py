@@ -46,7 +46,7 @@ def main():
         polygons = []
         for row in range(src.height):
             for col in range(src.width):
-                # Get the coordinates of the pixel
+                # Get the coordinates of the pixel, suggested by ChatGPT
                 lon, lat = rasterio.transform.xy(transform, row, col)
                 # Create a polygon for the pixel
                 polygon = Polygon(

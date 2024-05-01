@@ -45,7 +45,7 @@ def main(local):
                     "color": "black",
                     "fontSize": 14,
                     "line-height": 10,
-                    "font-weight": "bold",
+                    "fontWeight": "bold",
                 },
             )
         ]
@@ -92,7 +92,7 @@ def main(local):
                     "color": "black",
                     "fontSize": 14,
                     "line-height": 10,
-                    "font-weight": "bold",
+                    "fontWeight": "bold",
                 },
             )
         ]
@@ -507,7 +507,7 @@ def main(local):
                                         "value": 1,
                                     },
                                 ],
-                                value=[0],
+                                # value=[0],
                                 id="hotspot",
                             )
                         ],
@@ -584,8 +584,13 @@ def main(local):
     def update_geojson(value1, value2, value3, value4, value5):
         """
         Callback function that controls the sliders for the population map.
+        Suggested by ChatGPT
         """
-        filtered_features = [
+        # Deep copy the original dataset
+        zh_population_filtered = copy.deepcopy(zh_population)
+
+        # Apply filtering based on slider values
+        zh_population_filtered["features"] = [
             feature
             for feature in zh_population["features"]
             if feature["properties"]["n_total"] > value1
@@ -593,14 +598,16 @@ def main(local):
             and feature["properties"]["perc_old"] > value3
             and feature["properties"]["average_temp"] > value4
         ]
+
+        # If temperature hotspot checkbox is checked, further filter based on temperature classification
         if value5 == [1]:
-            filtered_features = [
+            zh_population_filtered["features"] = [
                 feature
-                for feature in filtered_features
+                for feature in zh_population_filtered["features"]
                 if feature["properties"]["average_temp_gis"] == "pos"
             ]
 
-        return {"type": "FeatureCollection", "features": filtered_features}
+        return zh_population_filtered
 
     @dashApp.callback(Output("info", "children"), Input("geojson", "hoverData"))
     def info_hover(feature):

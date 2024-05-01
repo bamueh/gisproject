@@ -48,7 +48,7 @@ def main(inCsv, outRaster):
     N = max(d["N"]) + 50
     S = min(d["N"]) - 50
 
-    # Create arrays
+    # Create arrays, suggested by ChatGPT
     # Total number of people
     total = np.full((int((N - S) / 100), int((E - W) / 100)), NODATAVAL)
     # Total number of people >65 years old
