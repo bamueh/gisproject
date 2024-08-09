@@ -2,6 +2,8 @@
 
 This repo contains data and code to reproduce the work done for the GIS project that is part of the [CAS Geographic Information Systems and Analysis](https://ikg.ethz.ch/cas-ris/cas-ris.html) at ETH Zurich.
 
+
+## Introduction
 The frequency and intensity of heat waves and hot summers increases (Fischer & Knutti, 2015). People older than 65 years, especially older women, and people with cardiovascular diseases are particularly at risk from high temperatures (Benmarhnia et al., 2015). Cities tend to heat up more than the surrounding areas, due to built-up areas and blocked air flows (de Almeida et al., 2021). The heat in cities can be mitigated through structural measures such as greening roofs, using light-colored asphalt, or creating green spaces (de Almeida et al., 2021). Due to increased adverse health effects of heat on older people, it might be desirable to take into account not only temperature but also the age structure of the local population when planning and prioritizing such measures.
 
 This project provides an interactive visualisation to allow the exploration of temperature across Zurich in relation to the age of the inhabitants.
